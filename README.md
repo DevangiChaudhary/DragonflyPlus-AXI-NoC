@@ -8,7 +8,7 @@ Communication between GPUs uses the **AXI protocol**, supporting high-performanc
 
 Routers employ **synchronous FIFO buffers** implemented as circular queues with independent read/write pointers, full/empty flags, and configurable depth/width. **Dedicated router ports** were developed as modular interfaces with input/output FIFOs, valid/ready signaling, and direction control, allowing burst traffic handling while preserving order and preventing packet loss. This modular structure simplifies flow control and supports scalable router designs.
 
-The repository includes the **top-level NoC module (`NOC.v`)**, a testbench (`NoCtestbench.v`), representative modules for GPU, NI, leaf and spine routers, FSMs, FIFOs, ports, and routing tables. Other instances in the full 32-GPU setup are replicated from these representatives.
+The repository includes the **top-level NoC module (`NOC.v`)**, and representative modules for GPU, NI, leaf and spine routers, FSMs, FIFOs, ports, and routing tables. Other instances in the full 32-GPU setup are replicated from these representatives.
 
 Below is a **topology diagram** showing the overall architecture of AI GPU Grid:
 <img width="921" height="1125" alt="image" src="https://github.com/user-attachments/assets/f0c3961a-2f33-4e14-a03b-224f14c03ffc" />
@@ -18,4 +18,4 @@ A single GPU-to-NI-to-leaf-to-spine connection is illustrated here:
 <img width="1000" height="641" alt="image" src="https://github.com/user-attachments/assets/b277a4be-95bd-4eda-a3b4-4a6485454610" />
 
 
-Simulation with `NoCtestbench.v` verifies correct packet transfer, FIFO buffering, and FSM-controlled routing. The design is **scalable, modular, and AXI-compliant**, providing a robust framework for high-performance GPU interconnects.
+All modules and their connections were thoroughly tested at each level, from individual GPUs, NIs, and routers to complete groups and up to the top-level NoC. This modular testing approach ensured correct packet transfer, FIFO buffering, and FSM-controlled routing across the entire system. The design remains scalable, modular, and AXI-compliant, providing a robust framework for high-performance GPU interconnects.
